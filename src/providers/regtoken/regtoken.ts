@@ -20,5 +20,7 @@ export class RegtokenProvider {
 
     return this.http.post("http://132.140.160.114/ionic-3/fcmIonicDemo/server/regToken.php", data).toPromise();
   }
-
+  sendMessage(data): Promise<any> {
+            return this.http.post("http://132.140.160.114/ionic-3/fcmIonicDemo/server/sendMessage.php",data).toPromise();
+      }
 }

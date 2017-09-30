@@ -6,8 +6,12 @@
       {{ 'WELCOME_INTRO' | translate }}
     </div>
   </div>
+  <ion-label>Enter Tile</ion-label>
+  <ion-input type="text" [(ngModel)]="data.title" name="title"></ion-input>
+  <ion-label>Enter Body</ion-label>
+  <ion-input type="text" [(ngModel)]="data.body" name="body"></ion-input>
   <div padding>
-    <button ion-button block (click)="signup()">{{ 'SIGNUP' | translate }}</button>
+    <button ion-button block (click)="sendMessage(data)">Submit</button>
     <button ion-button block (click)="login()" class="login">{{ 'LOGIN' | translate }}</button>
   </div>
 </ion-content>

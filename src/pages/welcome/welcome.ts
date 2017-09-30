@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController } from 'ionic-angular';
-
+import {RegtokenProvider} from '../../providers/regtoken/regtoken';
 /**
  * The Welcome Page is a splash page that quickly describes the app,
  * and then directs the user to create an account or log in.
@@ -13,14 +13,19 @@ import { IonicPage, NavController } from 'ionic-angular';
   templateUrl: 'welcome.html'
 })
 export class WelcomePage {
-
-  constructor(public navCtrl: NavController) { }
+data;
+  constructor(public navCtrl: NavController, private regProvide:RegtokenProvider) {
+    this.data = {};
+  }
 
   login() {
     this.navCtrl.push('LoginPage');
   }
 
-  signup() {
-    this.navCtrl.push('SignupPage');
+  sendMessage(title) {
+    this.regProvide.sendMessage(title)
+    .then(data=>this.data={},error=>console.log(error))
   }
-}
+
+  }
+

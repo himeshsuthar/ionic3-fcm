@@ -9,6 +9,7 @@ function sendNotification($title,$body,$token){
             (
       'body' 	=> $body,
       'title'	=> $title,
+      'sound' => 'assets/notification.mp3',
             );
 
     $fields = array
@@ -22,7 +23,7 @@ function sendNotification($title,$body,$token){
         (
           'Authorization: key=' . API_ACCESS_KEY,
           'Content-Type: application/json'
-        );
+          );
       $ch = curl_init();
       curl_setopt( $ch,CURLOPT_URL, 'https://fcm.googleapis.com/fcm/send' );
       curl_setopt( $ch,CURLOPT_POST, true );
@@ -30,10 +31,8 @@ function sendNotification($title,$body,$token){
       curl_setopt( $ch,CURLOPT_RETURNTRANSFER, true );
       curl_setopt( $ch,CURLOPT_SSL_VERIFYPEER, false );
       curl_setopt( $ch,CURLOPT_POSTFIELDS, json_encode( $fields ) );
-      $result = curl_exec($ch );
-      curl_close( $ch );
-
+      $result = curl_exec($ch);
+      curl_close($ch);
   echo $result;
 }
-
 ?>
